@@ -1,4 +1,4 @@
-package com.project.brothers_bakery.usecase.dto
+package com.project.brothers_bakery.dto
 
 import com.project.brothers_bakery.domain.Payment
 import java.math.BigDecimal

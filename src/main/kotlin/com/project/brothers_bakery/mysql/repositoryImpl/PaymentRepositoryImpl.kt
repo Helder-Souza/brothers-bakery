@@ -1,7 +1,7 @@
 package com.project.brothers_bakery.mysql.repositoryImpl
 
 import com.project.brothers_bakery.mysql.repository.PaymentRepository
-import com.project.brothers_bakery.usecase.dto.PaymentDto
+import com.project.brothers_bakery.dto.PaymentDto
 import java.util.UUID
 import org.springframework.stereotype.Repository
 
