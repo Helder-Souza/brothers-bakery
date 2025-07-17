@@ -1,0 +1,30 @@
+name: CI - Build & Test Kotlin App
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Build e Testes com Maven
+        run: mvn clean verify
+
+      - name: Verificar cobertura de testes
+        run: |
+          echo "Procurando arquivo de cobertura..."
+          ls target/site/jacoco
+          cat target/site/jacoco/index.html || echo "Abra o arquivo HTML para ver cobertura no seu ambiente local"
