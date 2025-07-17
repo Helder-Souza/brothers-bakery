@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_server_bakery
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: bakerydatabase
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./migrations:/migrations  # Monta a pasta de migrações
+    networks:
+      - mynetwork
+
+  migration:
+    build: .  # Use o Dockerfile na pasta atual
+    container_name: migration_runner
+    depends_on:
+      - mysql  # Garante que o MySQL esteja pronto
+    networks:
+      - mynetwork
+
+volumes:
+  mysql_data:
+
+networks:
+  mynetwork:
