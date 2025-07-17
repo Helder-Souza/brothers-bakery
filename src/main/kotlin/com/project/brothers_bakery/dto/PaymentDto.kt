@@ -13,9 +13,6 @@ data class PaymentDto(
     val paidAmount: BigDecimal,
     val paymentDate: Timestamp,
 ) {
-    companion object {
-
-    }
     fun toDomain() = Payment(
         id = null,
         orderId = orderId,
