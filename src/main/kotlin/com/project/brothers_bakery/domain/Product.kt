@@ -24,6 +24,4 @@ data class Product(
     val createdAt: Timestamp,
     val updatedAt: Timestamp,
     val shipping: BigDecimal
-) {
-
-}
+)
