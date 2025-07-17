@@ -11,6 +11,8 @@ interface PaymentRepository : JpaRepository<Payment, UUID> {
 
     @Modifying
     @Transactional
-    @Query("Update tb SET status = :status, t.updatedAt = CURRENT_TIMESTAMP WHERE t.id = :id")
+    @Query("Update tb_payments SET status = :status, updatedAt = CURRENT_TIMESTAMP WHERE id = :id")
     fun updateStatusAndUpdatedAt(status: String, id: UUID)
+
+    fun findByPaymentId(id: UUID): Payment?
 }
