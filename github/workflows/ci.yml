@@ -1,10 +1,11 @@
-name: CI - Build & Test Kotlin App
+name: CI
 
 on:
   push:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -22,9 +23,3 @@ jobs:
 
       - name: Build e Testes com Maven
         run: mvn clean verify
-
-      - name: Verificar cobertura de testes
-        run: |
-          echo "Procurando arquivo de cobertura..."
-          ls target/site/jacoco
-          cat target/site/jacoco/index.html || echo "Abra o arquivo HTML para ver cobertura no seu ambiente local"
