@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import java.util.UUID
 
 data class OrderItemDTO(
-    val id: UUID?,
+    val orderItemId: UUID?,
     val orderId: UUID,
     val productName: String,
     val quantity: Int,
@@ -13,7 +13,7 @@ data class OrderItemDTO(
 ) {
 
     fun toDomain() = OrderItem(
-        id = null,
+        orderItemId = null,
         orderId = orderId,
         productName = productName,
         quantity = quantity,

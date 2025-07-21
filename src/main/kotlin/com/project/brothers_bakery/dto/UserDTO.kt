@@ -4,8 +4,8 @@ import com.project.brothers_bakery.domain.User
 import java.sql.Timestamp
 import java.util.UUID
 
-data class UserDto(
-    val id: UUID?,
+data class UserDTO(
+    val userId: UUID?,
     val name: String,
     val email: String,
     val cpf: String,
@@ -14,7 +14,7 @@ data class UserDto(
     val updatedAt: Timestamp
 ) {
     fun toDomain() = User(
-        id = null,
+        userId = null,
         name = name,
         email = email,
         cpf = cpf,

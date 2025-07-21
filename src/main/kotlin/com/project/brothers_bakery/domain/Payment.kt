@@ -14,7 +14,7 @@ import java.util.UUID
 data class Payment(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    val id: UUID?,
+    val paymentId: UUID?,
     val orderId: UUID,
     val paymentMethod: String,
     val paymentStatus: String,

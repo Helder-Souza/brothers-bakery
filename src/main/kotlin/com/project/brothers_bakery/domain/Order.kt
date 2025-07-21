@@ -14,7 +14,7 @@ import java.util.UUID
 data class Order(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    val id: UUID?,
+    val orderId: UUID?,
     val status: String?,
     val userId: UUID,
     val createdAt: Timestamp,

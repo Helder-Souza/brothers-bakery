@@ -13,7 +13,7 @@ import java.util.UUID
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    val id: UUID?,
+    val userId: UUID?,
     val name: String,
     val email: String,
     val cpf: String,

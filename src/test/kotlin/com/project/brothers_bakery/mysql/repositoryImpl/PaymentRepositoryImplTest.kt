@@ -1,7 +1,7 @@
 package com.project.brothers_bakery.mysql.repositoryImpl
 
-import com.project.brothers_bakery.dto.PaymentDto
-import com.project.brothers_bakery.mysql.repository.PaymentRepository
+import com.project.brothers_bakery.dto.PaymentDTO
+import com.project.brothers_bakery.mysql.repository.PaymentJpaRepository
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
@@ -14,15 +14,15 @@ import org.junit.jupiter.api.Test
 
 class PaymentRepositoryImplTest {
 
-    private val paymentRepository = mockk<PaymentRepository>()
+    private val paymentRepository = mockk<PaymentJpaRepository>()
     private val paymentRepositoryImpl = PaymentRepositoryImpl(paymentRepository)
 
     @Test
     fun `should create a payment`() {
         val orderId = UUID.randomUUID()
 
-        val paymentDto = PaymentDto(
-            id = null,
+        val paymentDto = PaymentDTO(
+            paymentId = null,
             orderId = orderId,
             paymentMethod = "money",
             paymentStatus = "approved",
@@ -42,8 +42,8 @@ class PaymentRepositoryImplTest {
         val paymentId = UUID.randomUUID()
         val orderId = UUID.randomUUID()
 
-        val paymentDto = PaymentDto(
-            id = paymentId,
+        val paymentDto = PaymentDTO(
+            paymentId = paymentId,
             orderId = orderId,
             paymentMethod = "money",
             paymentStatus = "approved",

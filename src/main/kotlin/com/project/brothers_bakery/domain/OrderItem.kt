@@ -14,14 +14,14 @@ import java.util.UUID
 data class OrderItem(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    val id: UUID?,
+    val orderItemId: UUID?,
     val orderId: UUID,
     val productName: String,
     val quantity: Int,
     val price: BigDecimal
 ) {
     fun toDTO() = OrderItemDTO(
-        id = id,
+        orderItemId = orderItemId,
         orderId = orderId,
         productName = productName,
         quantity = quantity,

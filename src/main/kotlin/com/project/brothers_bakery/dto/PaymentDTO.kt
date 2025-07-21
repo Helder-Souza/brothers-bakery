@@ -5,8 +5,8 @@ import java.math.BigDecimal
 import java.sql.Timestamp
 import java.util.UUID
 
-data class PaymentDto(
-    val id: UUID?,
+data class PaymentDTO(
+    val paymentId: UUID?,
     val orderId: UUID,
     val paymentMethod: String,
     val paymentStatus: String,
@@ -14,7 +14,7 @@ data class PaymentDto(
     val paymentDate: Timestamp,
 ) {
     fun toDomain() = Payment(
-        id = null,
+        paymentId = null,
         orderId = orderId,
         paymentMethod = paymentMethod,
         paymentStatus = paymentStatus,
