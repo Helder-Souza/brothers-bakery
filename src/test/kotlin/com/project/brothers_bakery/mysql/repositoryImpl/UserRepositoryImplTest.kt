@@ -36,7 +36,7 @@ class UserRepositoryImplTest {
 
         userRepositoryImpl.create(user)
 
-        verify { userRepository.save(user.toDomain()) }
+        verify(exactly = 1) { userRepository.save(user.toDomain()) }
     }
 
     @Test
@@ -55,8 +55,9 @@ class UserRepositoryImplTest {
 
         every { userRepository.findByUserId(userId) } returns user
 
-        val result = userRepositoryImpl.findById(userId)
+        val result = userRepositoryImpl.findByUserId(userId)
 
+        verify(exactly = 1) { userRepository.findByUserId(userId) }
         assertNotNull(result)
         assertEquals(userId, result.id)
     }

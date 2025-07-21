@@ -13,7 +13,7 @@ class UserRepositoryImpl(private val userRepository: UserRepository) {
         userRepository.save(userDto.toDomain())
     }
 
-    fun findById(id: UUID): User? {
+    fun findByUserId(id: UUID): User? {
         return userRepository.findByUserId(id)
     }
 
