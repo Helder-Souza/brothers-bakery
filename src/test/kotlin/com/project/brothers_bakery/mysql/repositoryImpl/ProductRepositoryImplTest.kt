@@ -1,7 +1,7 @@
 package com.project.brothers_bakery.mysql.repositoryImpl
 
 import com.project.brothers_bakery.dto.ProductDTO
-import com.project.brothers_bakery.mysql.repository.ProductRepository
+import com.project.brothers_bakery.mysql.repository.ProductJpaRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -14,13 +14,13 @@ import kotlin.test.assertEquals
 
 class ProductRepositoryImplTest {
 
-    private val repository = mockk<ProductRepository>()
+    private val repository = mockk<ProductJpaRepository>()
     private val repositoryImpl = ProductRepositoryImpl(repository)
 
     @Test
     fun `should create a product`() {
         val input = ProductDTO(
-            id = null,
+            productId = null,
             name =  "Pão Frances",
             sku =  null,
             ean =  null,
@@ -40,7 +40,7 @@ class ProductRepositoryImplTest {
     fun `should update a product`() {
         val productId = UUID.randomUUID()
         val input = ProductDTO(
-            id = productId,
+            productId = productId,
             name =  "Pão Frances",
             sku =  null,
             ean =  null,
@@ -55,14 +55,14 @@ class ProductRepositoryImplTest {
         every { repository.updateProduct(productId) } returns productUpdated.toDomain()
         val result = repositoryImpl.updateProduct(productId)
         assertEquals("Pão de leite", result.name)
-        verify(exactly = 1) { repository.updateProduct(input.id!!) }
+        verify(exactly = 1) { repository.updateProduct(input.productId!!) }
     }
 
     @Test
     fun `should return a product by id`() {
         val productId = UUID.randomUUID()
         val input = ProductDTO(
-            id = productId,
+            productId = productId,
             name =  "Pão Frances",
             sku =  null,
             ean =  null,
@@ -76,13 +76,13 @@ class ProductRepositoryImplTest {
         every { repository.findByProductId(productId) } returns input.toDomain()
         val result = repositoryImpl.findProductById(productId)
         assertEquals("Pão Frances", result?.name)
-        verify(exactly = 1) { repository.findByProductId(input.id!!) }
+        verify(exactly = 1) { repository.findByProductId(input.productId!!) }
     }
 
     @Test
     fun `should return a product by name`() {
         val input = ProductDTO(
-            id = null,
+            productId = null,
             name =  "Pão Frances",
             sku =  null,
             ean =  null,

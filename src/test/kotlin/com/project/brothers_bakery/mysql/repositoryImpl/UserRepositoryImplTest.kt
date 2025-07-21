@@ -1,8 +1,8 @@
 package com.project.brothers_bakery.mysql.repositoryImpl
 
 import com.project.brothers_bakery.domain.User
-import com.project.brothers_bakery.dto.UserDto
-import com.project.brothers_bakery.mysql.repository.UserRepository
+import com.project.brothers_bakery.dto.UserDTO
+import com.project.brothers_bakery.mysql.repository.UserJpaRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -16,14 +16,14 @@ import org.junit.jupiter.api.Test
 
 class UserRepositoryImplTest {
 
-    private val userRepository = mockk<UserRepository>()
+    private val userRepository = mockk<UserJpaRepository>()
     private val userRepositoryImpl = UserRepositoryImpl(userRepository)
 
     @Test
     fun `should create a User`() {
 
-        val user = UserDto(
-            id = null,
+        val user = UserDTO(
+            userId = null,
             name = "test user",
             email = "email@email.com",
             cpf = "11122233344",
@@ -44,7 +44,7 @@ class UserRepositoryImplTest {
         val userId = UUID.randomUUID()
 
         val user = User(
-            id = userId,
+            userId = userId,
             name = "test user",
             email = "email@email.com",
             cpf = "11122233344",
@@ -59,6 +59,6 @@ class UserRepositoryImplTest {
 
         verify(exactly = 1) { userRepository.findByUserId(userId) }
         assertNotNull(result)
-        assertEquals(userId, result.id)
+        assertEquals(userId, result.userId)
     }
 }

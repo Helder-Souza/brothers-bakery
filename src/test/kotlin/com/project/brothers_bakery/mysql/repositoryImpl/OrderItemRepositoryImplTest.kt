@@ -1,7 +1,7 @@
 package com.project.brothers_bakery.mysql.repositoryImpl
 
 import com.project.brothers_bakery.dto.OrderItemDTO
-import com.project.brothers_bakery.mysql.repository.OrderItemRepository
+import com.project.brothers_bakery.mysql.repository.OrderItemJpaRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -12,13 +12,13 @@ import kotlin.test.assertEquals
 
 class OrderItemRepositoryImplTest {
 
-    private val repository = mockk<OrderItemRepository>()
+    private val repository = mockk<OrderItemJpaRepository>()
     private val repositoryImpl = OrderItemRepositoryImpl(repository)
 
     @Test
     fun `should create a orderItem`() {
         val input = OrderItemDTO(
-            id = null,
+            orderItemId = null,
             orderId = UUID.randomUUID(),
             productName = "Broa de milho",
             quantity = 3,
@@ -34,7 +34,7 @@ class OrderItemRepositoryImplTest {
         val orderId = UUID.randomUUID()
         val orderItemId = UUID.randomUUID()
         val input = OrderItemDTO(
-            id = orderItemId,
+            orderItemId = orderItemId,
             orderId = orderId,
             productName = "Broa de milho",
             quantity = 3,

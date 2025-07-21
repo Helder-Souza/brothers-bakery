@@ -1,7 +1,7 @@
 package com.project.brothers_bakery.mysql.repositoryImpl
 
 import com.project.brothers_bakery.dto.OrderDTO
-import com.project.brothers_bakery.mysql.repository.OrderRepository
+import com.project.brothers_bakery.mysql.repository.OrderJpaRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -14,13 +14,13 @@ import kotlin.test.assertEquals
 
 class OrderRepositoryImplTest {
 
-    private val repository = mockk<OrderRepository>()
+    private val repository = mockk<OrderJpaRepository>()
     private val repositoryImpl = OrderRepositoryImpl(repository)
 
     @Test
     fun `should create a order`() {
         val input = OrderDTO(
-            id = null,
+            orderId = null,
             status =  "created",
             userId =  UUID.randomUUID(),
             createdAt = Timestamp.valueOf(LocalDateTime.now()),
@@ -36,7 +36,7 @@ class OrderRepositoryImplTest {
     fun `should return a order by id`() {
         val orderId = UUID.randomUUID()
         val input = OrderDTO(
-            id = orderId,
+            orderId = orderId,
             status =  "created",
             userId =  UUID.randomUUID(),
             createdAt = Timestamp.valueOf(LocalDateTime.now()),
@@ -46,7 +46,7 @@ class OrderRepositoryImplTest {
         every { repository.findByOrderId(orderId) } returns input.toDomain()
         val result = repositoryImpl.findOrderById(orderId)
         assertEquals("created", result?.status)
-        verify(exactly = 1) { repository.findByOrderId(input.id!!) }
+        verify(exactly = 1) { repository.findByOrderId(input.orderId!!) }
     }
 }
 

@@ -14,7 +14,7 @@ import java.util.UUID
 data class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    val id: UUID?,
+    val productId: UUID?,
     val name: String,
     val sku: String?,
     val ean: String?,

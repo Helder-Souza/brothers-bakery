@@ -6,7 +6,7 @@ import java.sql.Timestamp
 import java.util.UUID
 
 data class OrderDTO(
-    val id: UUID?,
+    val orderId: UUID?,
     val status: String?,
     val userId: UUID,
     val createdAt: Timestamp,
@@ -15,7 +15,7 @@ data class OrderDTO(
 ) {
 
     fun toDomain() = Order(
-        id = null,
+        orderId = null,
         status = status,
         userId = userId,
         createdAt = createdAt,
