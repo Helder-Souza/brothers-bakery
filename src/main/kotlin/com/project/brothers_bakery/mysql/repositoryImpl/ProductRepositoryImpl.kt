@@ -17,8 +17,8 @@ class ProductRepositoryImpl(private val productRepository: ProductRepository) {
         return productRepository.findByNameContainingIgnoreCase(name)
     }
 
-    fun createProduct(productDTO: ProductDTO) {
-        productRepository.save(productDTO.toDomain())
+    fun createProduct(productDTO: ProductDTO): ProductDTO? {
+        return productRepository.save(productDTO.toDomain()).toDto()
     }
 
     fun updateProduct(productId: UUID): Product {
