@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS tb_products (
-	id BINARY(16) default (UUID_TO_BIN(UUID())),
+	product_id BINARY(16) default (UUID_TO_BIN(UUID())),
 	name VARCHAR(50) NOT NULL,
 	sku VARCHAR(255),
 	ean VARCHAR(255),
@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS tb_products (
 	discount INTEGER,
 	created_at TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (product_id)
 );
