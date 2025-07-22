@@ -13,6 +13,10 @@ class ProductRepositoryImpl(private val productRepository: ProductRepository) {
         return productRepository.findByProductId(productId)
     }
 
+    fun findAllProducts(): List<ProductDTO>? {
+        return productRepository.findAll().map { it.toDto() }
+    }
+
     fun findByName(name: String) : Product {
         return productRepository.findByNameContainingIgnoreCase(name)
     }

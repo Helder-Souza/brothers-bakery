@@ -4,6 +4,8 @@ import com.project.brothers_bakery.dto.ProductDTO
 import com.project.brothers_bakery.usecase.ProductUseCase
 import java.net.URI
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
@@ -12,7 +14,8 @@ class ProductController(
     private val useCase: ProductUseCase
 ) {
 
-    fun create(input: ProductDTO): ResponseEntity<ProductDTO> {
+    @PostMapping("/create-product")
+    fun create(@RequestBody input: ProductDTO): ResponseEntity<ProductDTO> {
         val uri: URI = ServletUriComponentsBuilder
             .fromCurrentRequest()
             .path(ID)
