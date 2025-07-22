@@ -36,7 +36,7 @@ class ProductControllerTest : IntegrationTest() {
 
         val request = HttpEntity(dto, headers)
 
-        val response = restTemplate.postForEntity("/create-product", request, ProductDTO::class.java)
+        val response = restTemplate.postForEntity("/products/create-product", request, ProductDTO::class.java)
 
         assertEquals(HttpStatus.CREATED,response.statusCode)
 

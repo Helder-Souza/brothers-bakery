@@ -27,6 +27,7 @@ class ProductRepositoryImplTest {
             price = BigDecimal.valueOf(0.60),
             urlImage = null,
             discount =  null,
+            stock = 1,
             createdAt = Timestamp.valueOf(LocalDateTime.now()),
             updatedAt = Timestamp.valueOf(LocalDateTime.now()),
             shipping =  BigDecimal.valueOf(0.05)
@@ -47,6 +48,7 @@ class ProductRepositoryImplTest {
             price = BigDecimal.valueOf(0.60),
             urlImage = null,
             discount =  null,
+            stock = 1,
             createdAt = Timestamp.valueOf(LocalDateTime.now()),
             updatedAt = Timestamp.valueOf(LocalDateTime.now()),
             shipping =  BigDecimal.valueOf(0.05)
@@ -69,6 +71,7 @@ class ProductRepositoryImplTest {
             price = BigDecimal.valueOf(0.60),
             urlImage = null,
             discount =  null,
+            stock = 1,
             createdAt = Timestamp.valueOf(LocalDateTime.now()),
             updatedAt = Timestamp.valueOf(LocalDateTime.now()),
             shipping =  BigDecimal.valueOf(0.05)
@@ -89,6 +92,7 @@ class ProductRepositoryImplTest {
             price = BigDecimal.valueOf(0.60),
             urlImage = null,
             discount =  null,
+            stock = 1,
             createdAt = Timestamp.valueOf(LocalDateTime.now()),
             updatedAt = Timestamp.valueOf(LocalDateTime.now()),
             shipping =  BigDecimal.valueOf(0.05)

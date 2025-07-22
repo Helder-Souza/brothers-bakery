@@ -22,6 +22,7 @@ data class Product(
     val price: BigDecimal,
     val urlImage: String?,
     val discount: Int?,
+    val stock: Int,
     val createdAt: Timestamp,
     val updatedAt: Timestamp,
     val shipping: BigDecimal
@@ -34,6 +35,7 @@ data class Product(
         price = price,
         urlImage = urlImage,
         discount = discount,
+        stock = stock,
         createdAt = createdAt,
         updatedAt = updatedAt,
         shipping = shipping,

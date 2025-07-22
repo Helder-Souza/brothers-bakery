@@ -14,8 +14,9 @@ data class ProductDTO(
     val price: BigDecimal,
     val urlImage: String?,
     val discount: Int?,
-    val createdAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now()),
-    val updatedAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now()),
+    val stock: Int,
+    val createdAt: Timestamp = Timestamp.valueOf(LocalDateTime.now()),
+    val updatedAt: Timestamp = Timestamp.valueOf(LocalDateTime.now()),
     val shipping: BigDecimal
 ) {
 
@@ -27,8 +28,9 @@ data class ProductDTO(
         price = price,
         urlImage = urlImage,
         discount = discount,
-        createdAt = createdAt!!,
-        updatedAt = updatedAt!!,
+        stock = stock,
+        createdAt = createdAt,
+        updatedAt = updatedAt,
         shipping = shipping
     )
 }

@@ -5,5 +5,8 @@
   "price": 0.60,
   "urlImage": null,
   "discount": 10,
+  "stock": 100,
+  "createdAt33": "2025-01-01T10:00:00",
+  "updatedAt11": "2025-01-01T10:00:00",
   "shipping": 5.0
 }
