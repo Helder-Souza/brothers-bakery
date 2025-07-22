@@ -6,7 +6,7 @@ import java.sql.Timestamp
 import java.util.UUID
 
 data class ProductDTO(
-    val id: UUID?,
+    val productId: UUID?,
     val name: String,
     val sku: String?,
     val ean: String?,
@@ -19,7 +19,7 @@ data class ProductDTO(
 ) {
 
     fun toDomain() = Product(
-        id = null,
+        productId = null,
         name = name,
         sku = sku,
         ean = ean,
