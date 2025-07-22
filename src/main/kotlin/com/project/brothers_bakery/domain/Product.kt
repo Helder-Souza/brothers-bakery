@@ -27,7 +27,7 @@ data class Product(
     val shipping: BigDecimal
 ) {
     fun toDto() = ProductDTO(
-        id = id,
+        productId = productId,
         name = name,
         sku = sku,
         ean = ean,

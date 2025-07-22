@@ -3,22 +3,18 @@ package com.project.brothers_bakery.controller
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.project.brothers_bakery.config.IntegrationTest
 import com.project.brothers_bakery.dto.ProductDTO
-import com.project.brothers_bakery.mysql.repository.ProductRepository
 import com.project.brothers_bakery.mysql.repositoryImpl.ProductRepositoryImpl
+import java.math.BigDecimal
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
-import org.springframework.test.context.ActiveProfiles
-import readJsonAs
 
-@SpringBootTest
-@ActiveProfiles("test")
 class ProductControllerTest : IntegrationTest() {
 
     @Autowired
@@ -28,28 +24,29 @@ class ProductControllerTest : IntegrationTest() {
     lateinit var productRepositoryImpl: ProductRepositoryImpl
 
     @Autowired
-    lateinit var productRepository: ProductRepository
-
-    @Autowired
     lateinit var objectMapper: ObjectMapper
 
     @Test
     fun `should create and persist a product`() {
-        val dto: ProductDTO = objectMapper.readJsonAs("payloads/product_input.json")
+        val inputStream = javaClass.classLoader.getResourceAsStream("files/payloads/product_input.json")
+        val dto = objectMapper.readValue(inputStream, ProductDTO::class.java)
 
         val headers = HttpHeaders()
         headers.contentType = MediaType.APPLICATION_JSON
 
         val request = HttpEntity(dto, headers)
 
-        val response = restTemplate.postForEntity("/products", request, ProductDTO::class.java)
+        val response = restTemplate.postForEntity("/create-product", request, ProductDTO::class.java)
 
         assertEquals(HttpStatus.CREATED,response.statusCode)
-        assertEquals("Pão Francês", response.body?.name)
 
-        val produtos = productRepositoryImpl.findAllProducts()
-        assertEquals(1, produtos!!.size)
-        assertEquals("12345", produtos.first().sku)
+        val products = productRepositoryImpl.findAllProducts()
+        val productDTO = products?.first()
+        assertEquals(1, products!!.size)
+        assertNotNull(productDTO)
+        assertEquals("12345", productDTO.sku)
+        assertEquals("Pão Francês", productDTO.name)
+        assertEquals(BigDecimal.valueOf(0.60).setScale(2), productDTO.price)
     }
 
 }

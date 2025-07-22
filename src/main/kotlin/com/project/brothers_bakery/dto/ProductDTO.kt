@@ -3,6 +3,7 @@ package com.project.brothers_bakery.dto
 import com.project.brothers_bakery.domain.Product
 import java.math.BigDecimal
 import java.sql.Timestamp
+import java.time.LocalDateTime
 import java.util.UUID
 
 data class ProductDTO(
@@ -13,8 +14,8 @@ data class ProductDTO(
     val price: BigDecimal,
     val urlImage: String?,
     val discount: Int?,
-    val createdAt: Timestamp,
-    val updatedAt: Timestamp,
+    val createdAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now()),
+    val updatedAt: Timestamp? = Timestamp.valueOf(LocalDateTime.now()),
     val shipping: BigDecimal
 ) {
 
@@ -26,8 +27,8 @@ data class ProductDTO(
         price = price,
         urlImage = urlImage,
         discount = discount,
-        createdAt = createdAt,
-        updatedAt = updatedAt,
+        createdAt = createdAt!!,
+        updatedAt = updatedAt!!,
         shipping = shipping
     )
 }

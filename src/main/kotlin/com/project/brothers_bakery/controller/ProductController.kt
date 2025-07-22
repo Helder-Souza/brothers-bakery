@@ -19,7 +19,7 @@ class ProductController(
         val uri: URI = ServletUriComponentsBuilder
             .fromCurrentRequest()
             .path(ID)
-            .buildAndExpand(useCase.create(input)!!.id)
+            .buildAndExpand(useCase.create(input)!!.productId)
             .toUri()
         return ResponseEntity.created(uri).build()
     }
