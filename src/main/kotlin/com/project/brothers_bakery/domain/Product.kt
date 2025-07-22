@@ -1,5 +1,6 @@
 package com.project.brothers_bakery.domain
 
+import com.project.brothers_bakery.dto.ProductDTO
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -21,7 +22,22 @@ data class Product(
     val price: BigDecimal,
     val urlImage: String?,
     val discount: Int?,
+    val stock: Int,
     val createdAt: Timestamp,
     val updatedAt: Timestamp,
     val shipping: BigDecimal
-)
+) {
+    fun toDTO() = ProductDTO(
+        productId = productId,
+        name = name,
+        sku = sku,
+        ean = ean,
+        price = price,
+        urlImage = urlImage,
+        discount = discount,
+        stock = stock,
+        createdAt = createdAt,
+        updatedAt = updatedAt,
+        shipping = shipping,
+    )
+}
