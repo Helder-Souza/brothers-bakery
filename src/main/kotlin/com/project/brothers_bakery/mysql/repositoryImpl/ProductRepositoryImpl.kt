@@ -13,12 +13,16 @@ class ProductRepositoryImpl(private val productJpaRepository: ProductJpaReposito
         return productJpaRepository.findByProductId(productId)
     }
 
+    fun findAllProducts(): List<ProductDTO>? {
+        return productJpaRepository.findAll().map { it.toDTO() }
+    }
+
     fun findByName(name: String) : Product {
         return productJpaRepository.findByNameContainingIgnoreCase(name)
     }
 
-    fun createProduct(productDTO: ProductDTO) {
-        productJpaRepository.save(productDTO.toDomain())
+    fun createProduct(productDTO: ProductDTO): ProductDTO? {
+        return productJpaRepository.save(productDTO.toDomain()).toDTO()
     }
 
     fun updateProduct(productId: UUID): Product {
