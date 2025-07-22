@@ -1,5 +1,6 @@
 package com.project.brothers_bakery.domain
 
+import com.project.brothers_bakery.dto.UserDTO
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -18,6 +19,20 @@ data class User(
     val email: String,
     val cpf: String,
     val password: String,
+    val address: String,
+    val active: Boolean,
     val createdAt: Timestamp,
     val updatedAt: Timestamp
-)
+){
+    fun toDTO() = UserDTO(
+        userId = userId,
+        name = name,
+        email = email,
+        cpf = cpf,
+        password = password,
+        address = address,
+        active = active,
+        createdAt = createdAt,
+        updatedAt = updatedAt,
+    )
+}
