@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS tb_products (
     stock INTEGER NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
-	PRIMARY KEY (product_id)
+    PRIMARY KEY (product_id)
 );
