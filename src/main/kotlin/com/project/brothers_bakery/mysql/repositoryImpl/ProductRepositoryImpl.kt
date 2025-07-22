@@ -14,7 +14,7 @@ class ProductRepositoryImpl(private val productJpaRepository: ProductJpaReposito
     }
 
     fun findAllProducts(): List<ProductDTO>? {
-        return productJpaRepository.findAll().map { it.toDto() }
+        return productJpaRepository.findAll().map { it.toDTO() }
     }
 
     fun findByName(name: String) : Product {
@@ -22,7 +22,7 @@ class ProductRepositoryImpl(private val productJpaRepository: ProductJpaReposito
     }
 
     fun createProduct(productDTO: ProductDTO): ProductDTO? {
-        return productJpaRepository.save(productDTO.toDomain()).toDto()
+        return productJpaRepository.save(productDTO.toDomain()).toDTO()
     }
 
     fun updateProduct(productId: UUID): Product {

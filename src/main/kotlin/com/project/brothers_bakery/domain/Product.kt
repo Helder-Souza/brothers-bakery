@@ -26,7 +26,7 @@ data class Product(
     val updatedAt: Timestamp,
     val shipping: BigDecimal
 ) {
-    fun toDto() = ProductDTO(
+    fun toDTO() = ProductDTO(
         productId = productId,
         name = name,
         sku = sku,
