@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS tb_products (
 	price DECIMAL(10,2) NOT NULL,
 	url_image VARCHAR(255),
 	discount INTEGER,
+	shipping DECIMAL(10,2),
 	created_at TIMESTAMP NOT NULL,
 	updated_at TIMESTAMP NOT NULL,
 	PRIMARY KEY (product_id)
