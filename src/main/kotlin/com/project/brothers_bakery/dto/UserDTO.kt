@@ -16,7 +16,7 @@ data class UserDTO(
     val address: String,
     val active: Boolean = true,
     val createdAt: Timestamp = Timestamp.valueOf(LocalDateTime.now()),
-    val updatedAt: Timestamp
+    val updatedAt: Timestamp = Timestamp.valueOf(LocalDateTime.now())
 ) {
     fun toDomain() = User(
         userId = null,
@@ -42,7 +42,7 @@ data class UserDTO(
             return BCrypt.hashpw(password, BCrypt.gensalt())
         }
 
-        private fun checkPassword(password: String, hashed: String): Boolean {
+        fun checkPassword(password: String, hashed: String): Boolean {
             return BCrypt.checkpw(password, hashed)
         }
     }
