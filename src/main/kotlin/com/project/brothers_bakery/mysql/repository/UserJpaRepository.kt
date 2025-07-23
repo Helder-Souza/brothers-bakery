@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query
 
 interface UserJpaRepository : JpaRepository<User, UUID> {
 
-//    fun findByUserId(id: UUID): User?
-
     @Query("SELECT * FROM tb_users WHERE email = :email", nativeQuery = true)
     fun findUserByEmailContainingIgnoreCase(email: String): User?
 }

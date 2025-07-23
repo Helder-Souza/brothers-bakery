@@ -16,8 +16,4 @@ class UserUseCase(private val repositoryImpl: UserRepositoryImpl) {
     fun findUserByEmail(email: String): UserDTO? {
         return repositoryImpl.findByEmail(email)
     }
-
-//    fun findUserById(id: UUID): UserDTO? {
-//        return repositoryImpl.findByUserId(id);
-//    }
 }
