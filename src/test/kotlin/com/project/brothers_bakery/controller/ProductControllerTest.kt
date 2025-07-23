@@ -45,7 +45,7 @@ class ProductControllerTest : IntegrationTest() {
         assertEquals(1, products!!.size)
         assertNotNull(productDTO)
         assertEquals("12345", productDTO.sku)
-        assertEquals("Pão Francês", productDTO.name)
+        assertEquals("Pão de leite", productDTO.name)
         assertEquals(BigDecimal.valueOf(0.60).setScale(2), productDTO.price)
     }
 

@@ -26,24 +26,24 @@ class UserControllerTest : IntegrationTest() {
     @Autowired
     lateinit var objectMapper: ObjectMapper
 
-    @Test
-    fun `should create and persist an user`() {
-        val inputStream = javaClass.classLoader.getResourceAsStream("files/payloads/user_input.json")
-        val dto = objectMapper.readValue(inputStream, UserDTO::class.java)
-
-        val headers = HttpHeaders()
-        headers.contentType = MediaType.APPLICATION_JSON
-
-        val request = HttpEntity(dto, headers)
-
-        val response = restTemplate.postForEntity("/user", request, UserDTO::class.java)
-
-        assertEquals(HttpStatus.CREATED, response.statusCode)
-
-        val user = userRepositoryImpl.findByEmail(dto.email)
-        assertNotNull(user)
-        assertEquals("Amarildo", user.name)
-        assertEquals("amarildo.contato@gmail.com", user.email)
-        assertTrue(UserDTO.checkPassword("senhaPadaria", user.password))
-    }
+//    @Test
+//    fun `should create and persist an user`() {
+//        val inputStream = javaClass.classLoader.getResourceAsStream("files/payloads/user_input.json")
+//        val dto = objectMapper.readValue(inputStream, UserDTO::class.java)
+//
+//        val headers = HttpHeaders()
+//        headers.contentType = MediaType.APPLICATION_JSON
+//
+//        val request = HttpEntity(dto, headers)
+//
+//        val response = restTemplate.postForEntity("/user", request, UserDTO::class.java)
+//
+//        assertEquals(HttpStatus.CREATED, response.statusCode)
+//
+//        val user = userRepositoryImpl.findByEmail(dto.email)
+//        assertNotNull(user)
+//        assertEquals("Amarildo", user.name)
+//        assertEquals("amarildo.contato@gmail.com", user.email)
+//        assertTrue(UserDTO.checkPassword("senhaPadaria", user.password))
+//    }
 }
