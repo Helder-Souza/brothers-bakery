@@ -1,2 +1,0 @@
-ALTER TABLE tb_users
-	ADD COLUMN address VARCHAR(100);
